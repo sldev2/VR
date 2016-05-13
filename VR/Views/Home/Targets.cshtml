@@ -1,0 +1,64 @@
+﻿@model IEnumerable<VR.Models.Target_TemplateInfo>
+
+@{
+    ViewBag.Title = "Seed Code for Targets and their Posses";
+}
+
+<h2>Targets</h2>
+
+
+
+@foreach (var item in Model)
+{
+    <pre>   
+                var target@(item.Name.Replace(" ", "_").Replace(".","")) = new Target
+                {
+                    Name = "@Html.DisplayFor(modelItem => item.Name)",
+                    Party = "@Html.DisplayFor(modelItem => item.Party)",
+                    Region = "@Html.DisplayFor(modelItem => item.Region)",
+                    IsIncumbent = @item.IsIncumbent.ToString().ToLower(),
+                    IsActive = @item.IsActive.ToString().ToLower(),
+                    CountryId = 1,
+                    GovernmentLevelId = @Html.DisplayFor(modelItem => item.GovernmentLevelId),
+                    HouseId = @Html.DisplayFor(modelItem => item.HouseId),
+                    GeneralElectionDate = new DateTime(@item.GeneralElectionDate.Year, @item.GeneralElectionDate.Month, @item.GeneralElectionDate.Day), 
+                    @if (item.PrimaryDate != null)                    
+                    {
+                    <text>PrimaryDate =  new DateTime(@((@item.PrimaryDate.Value).Year), @((@item.PrimaryDate.Value).Month), @((@item.PrimaryDate.Value).Day)),  </text>
+                    }  else {
+                    <text>PrimaryDate = null, </text>
+                    } 
+                    @if (item.ConventionDate != null)                    
+                    {
+                    <text>ConventionDate =  new DateTime(@((@item.ConventionDate.Value).Year), @((@item.ConventionDate.Value).Month), @((@item.ConventionDate.Value).Day)),  </text>
+                    }else {
+                    <text>ConventionDate = null, </text>
+                    } 
+                    IsBadOnTPP = @item.IsBadOnTPP.ToString().ToLower(),
+                    IsGoodOnTPP = @item.IsGoodOnTPP.ToString().ToLower(),
+                    TPPGoodBadReason = "@Html.DisplayFor(modelItem => item.TPPGoodBadReason)"
+                };
+                context.Targets.Add(target@(item.Name.Replace(" ", "_").Replace(".", "")));
+            </pre>
+}
+
+
+
+<pre>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// </pre>
+
+
+@foreach (var item in Model)
+{
+    <pre>   
+                  context.Posses.Add(
+                    new Posse 
+                    {
+                        Name = "Anti-TPP Git @item.Name.Split(' ').Last() Posse",
+                        Info = "Posse #" + <text>target</text>@(item.Name.Replace(" ", "_").Replace(".","")).Id<text> + " Info",</text>
+                        TargetId = target@(item.Name.Replace(" ", "_").Replace(".","")).Id,
+                        State = ObjectState.State.Added
+                    }
+                  ); 
+
+     </pre>
+}
