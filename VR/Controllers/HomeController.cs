@@ -18,6 +18,9 @@ namespace VR.Controllers
         public ActionResult Targets()
         {
 
+
+            RootViewModel rootViewModel = new RootViewModel();
+
             List<Target_TemplateInfo> targets = new List<Target_TemplateInfo>();
 
             using(var context = new VRElectionDataContext())
@@ -27,7 +30,9 @@ namespace VR.Controllers
             }
 
 
-            return View(targets);
+            rootViewModel.Target_TemplateInfos = targets;
+
+            return View(rootViewModel);
         }
 
         public ActionResult About()

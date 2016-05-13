@@ -208,6 +208,7 @@
     <Compile Include="Models\PrezDem.cs" />
     <Compile Include="Models\PrezRepub.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\RootViewModel.cs" />
     <Compile Include="Models\Target.cs" />
     <Compile Include="Models\Target_TemplateInfo.cs" />
     <Compile Include="Models\User.cs" />
