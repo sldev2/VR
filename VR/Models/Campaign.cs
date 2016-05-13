@@ -7,7 +7,7 @@ namespace VR.Models
     {
         public Campaign()
         {
-            this.CampaignPhases = new List<CampaignPhas>();
+            this.CampaignPhases = new List<CampaignPhase>();
         }
 
         public int Id { get; set; }
@@ -24,7 +24,7 @@ namespace VR.Models
         public string TargetMacroRegion { get; set; }
         public string TargetElectoralRegionName { get; set; }
         public string TargetElectoralRegionAbbreviation { get; set; }
-        public virtual ICollection<CampaignPhas> CampaignPhases { get; set; }
+        public virtual ICollection<CampaignPhase> CampaignPhases { get; set; }
         public virtual Poss Poss { get; set; }
     }
 }

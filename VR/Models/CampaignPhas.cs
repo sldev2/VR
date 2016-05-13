@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace VR.Models
 {
-    public partial class CampaignPhas
+    public partial class CampaignPhase
     {
         public int Id { get; set; }
         public int Number { get; set; }

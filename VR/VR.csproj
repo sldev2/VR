@@ -178,7 +178,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Mapping\CampaignMap.cs" />
-    <Compile Include="Models\Mapping\CampaignPhasMap.cs" />
+    <Compile Include="Models\Mapping\CampaignPhaseMap.cs" />
     <Compile Include="Models\Mapping\ClaimDataMap.cs" />
     <Compile Include="Models\Mapping\CongDemMap.cs" />
     <Compile Include="Models\Mapping\CountryMap.cs" />

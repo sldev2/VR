@@ -3,9 +3,9 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace VR.Models.Mapping
 {
-    public class CampaignPhasMap : EntityTypeConfiguration<CampaignPhas>
+    public class CampaignPhaseMap : EntityTypeConfiguration<CampaignPhase>
     {
-        public CampaignPhasMap()
+        public CampaignPhaseMap()
         {
             // Primary Key
             this.HasKey(t => t.Id);

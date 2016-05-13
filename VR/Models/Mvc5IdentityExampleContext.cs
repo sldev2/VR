@@ -16,7 +16,7 @@ namespace VR.Models
         {
         }
 
-        public DbSet<CampaignPhas> CampaignPhases { get; set; }
+        public DbSet<CampaignPhase> CampaignPhases { get; set; }
         public DbSet<Campaign> Campaigns { get; set; }
         public DbSet<ClaimData> ClaimDatas { get; set; }
         public DbSet<Country> Countries { get; set; }
@@ -35,7 +35,7 @@ namespace VR.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new CampaignPhasMap());
+            modelBuilder.Configurations.Add(new CampaignPhaseMap());
             modelBuilder.Configurations.Add(new CampaignMap());
             modelBuilder.Configurations.Add(new ClaimDataMap());
             modelBuilder.Configurations.Add(new CountryMap());
