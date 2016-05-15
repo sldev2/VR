@@ -39,54 +39,152 @@ namespace VR.Controllers
 
             // get the particulars wrt each of the states, for the remaining Prez primaries
             List<PrezCampaignStateParticulars> prezCampaignStateParticulars = new List<PrezCampaignStateParticulars>();
+
+#region prezCampaignStateParticulars
+
+            //================================  Dems            
+            
             prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
             {
+                Party = "Democratic",
+                StateName = "Kentucky",
+                StateAbbreviation = "KY",
+                PrimaryDate = new DateTime(2016, 5, 17),
+                GeneralDate = new DateTime(2016, 11, 8)
+
+            });
+            
+            prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
+            {
+                Party = "Democratic",
                 StateName = "Oregon",
                 StateAbbreviation = "OR",
-                PrimaryDate = new DateTime(2016, 5, 17)
+                PrimaryDate = new DateTime(2016, 5, 17),
+                GeneralDate = new DateTime(2016, 11, 8)
             });
+
 
             prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
             {
-                StateName = "Washington",
-                StateAbbreviation = "WA",
-                PrimaryDate = new DateTime(2016, 5, 24)
-            });
-
-            prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
-            {
+                Party = "Democratic",
                 StateName = "South Dakota",
                 StateAbbreviation = "SD",
-                PrimaryDate = new DateTime(2016, 6, 7)
+                PrimaryDate = new DateTime(2016, 6, 7),
+                GeneralDate = new DateTime(2016, 11, 8)
             });
 
             prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
             {
+                Party = "Democratic",
                 StateName = "California",
                 StateAbbreviation = "CA",
-                PrimaryDate = new DateTime(2016, 6, 7)
+                PrimaryDate = new DateTime(2016, 6, 7),
+                GeneralDate = new DateTime(2016, 11, 8)
             });
 
             prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
             {
+                Party = "Democratic",
                 StateName = "Montana",
                 StateAbbreviation = "MT",
-                PrimaryDate = new DateTime(2016, 6, 7)
+                PrimaryDate = new DateTime(2016, 6, 7),
+                GeneralDate = new DateTime(2016, 11, 8)
             });
 
             prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
             {
+                Party = "Democratic",
                 StateName = "New Jersey",
                 StateAbbreviation = "NJ",
-                PrimaryDate = new DateTime(2016, 6, 7)
+                PrimaryDate = new DateTime(2016, 6, 7),
+                GeneralDate = new DateTime(2016, 11, 8)
             });
 
             prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
             {
+                Party = "Democratic",
                 StateName = "New Mexico",
                 StateAbbreviation = "NM",
-                PrimaryDate = new DateTime(2016, 6, 7)
+                PrimaryDate = new DateTime(2016, 6, 7),
+                GeneralDate = new DateTime(2016, 11, 8)
             });
+
+            prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
+            {
+                Party = "Democratic",
+                StateName = "North Dakota",
+                StateAbbreviation = "ND",
+                PrimaryDate = new DateTime(2016, 6, 7),
+                GeneralDate = new DateTime(2016, 11, 8)
+            });
+
+
+            //================================  Repubs
+
+            prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
+            {
+                Party = "Republican",
+                StateName = "Oregon",
+                StateAbbreviation = "OR",
+                PrimaryDate = new DateTime(2016, 5, 17),
+                GeneralDate = new DateTime(2016, 11, 8)
+            });
+
+            prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
+            {
+                Party = "Republican",
+                StateName = "Washington",
+                StateAbbreviation = "WA",
+                PrimaryDate = new DateTime(2016, 5, 24),
+                GeneralDate = new DateTime(2016, 11, 8)
+            });
+
+            prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
+            {
+                Party = "Republican",
+                StateName = "South Dakota",
+                StateAbbreviation = "SD",
+                PrimaryDate = new DateTime(2016, 6, 7),
+                GeneralDate = new DateTime(2016, 11, 8)
+            });
+
+            prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
+            {
+                Party = "Republican",
+                StateName = "California",
+                StateAbbreviation = "CA",
+                PrimaryDate = new DateTime(2016, 6, 7),
+                GeneralDate = new DateTime(2016, 11, 8)
+            });
+
+            prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
+            {
+                Party = "Republican",
+                StateName = "Montana",
+                StateAbbreviation = "MT",
+                PrimaryDate = new DateTime(2016, 6, 7),
+                GeneralDate = new DateTime(2016, 11, 8)
+            });
+
+            prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
+            {
+                Party = "Republican",
+                StateName = "New Jersey",
+                StateAbbreviation = "NJ",
+                PrimaryDate = new DateTime(2016, 6, 7),
+                GeneralDate = new DateTime(2016, 11, 8)
+            });
+
+            prezCampaignStateParticulars.Add(new PrezCampaignStateParticulars()
+            {
+                Party = "Republican",
+                StateName = "New Mexico",
+                StateAbbreviation = "NM",
+                PrimaryDate = new DateTime(2016, 6, 7),
+                GeneralDate = new DateTime(2016, 11, 8)
+            });
+#endregion
+
 
 
             // for each Presidential target
@@ -97,42 +195,81 @@ namespace VR.Controllers
                 foreach(var state in prezCampaignStateParticulars)
                 {
 
-               
-
-                   
-                    prezCampaignViewModel = new PrezCampaignViewModel()
+                    if(target.Party == state.Party)
                     {
-                        IsMultiphasic = true,
-                        Name = "Wake up the public on TPP, " + target.Name + "!",
-                        Issue = "The Trans-Pacific Partnership, TPP",
-                        Info = @"Possibly the worst piece of legislation in US history, TPP promises to subvert Constitutional order in favor of multinational corporations. These corporations will be able to sue for ""anticipated loss of profits"", and disputes will be adjudicated by a tribunal of corporate appointed lawyers.",
-                        IsPresidential = true,
-                        ElectionYear = 2016,
-                        PrimaryDate = null,
-                        ConventionDate = (target.Party == "Democratic") ? state.DemConventionDate : state.RepubConventionDate,
-                        GeneralDate = new DateTime(2016, 11, 8),
-                        TargetMacroRegion = "US",
-                        TargetElectoralRegionName = state.StateName,
-                        TargetElectoralRegionAbbreviation = state.StateAbbreviation,
-                        PrezCampaignPhaseViewModels = new List<PrezCampaignPhaseViewModel>()
-                        {
-                            new PrezCampaignPhaseViewModel()
-                            {
-                                Number = 1,
-                                Redline = target.Name + " must declare TPP to be evil, and declare unequivocal opposition to same on his/her primary website",
-                                RegionName = state.StateName,
-                                RegionAbbreviation = state.StateAbbreviation,
-                                //PrimaryDate = null,
-                                GeneralDate = new DateTime(2016, 11, 8),
-                                PledgeDeadline = new DateTime(2016, 5, 10 ),
-                                PledgeFulfillmentDeadline = new DateTime(2016, 5, 16),
-                                EndDate = new DateTime(2016, 5, 17)
-                            }
-                        }
-                    };
+	                    prezCampaignViewModel = new PrezCampaignViewModel()
+	                        {
+	                            targetHandle = "target" + target.Name.Replace(" ", "_").Replace(".", ""),
+	                            targetName = target.Name,
+	                            IsMultiphasic = true,
+	                            Name = "Wake up the public on TPP, " + target.Name + "!",
+	                            Issue = "The Trans-Pacific Partnership, TPP",
+	                            Info = @"Possibly the worst piece of legislation in US history, TPP promises to subvert Constitutional order in favor of multinational corporations. These corporations will be able to sue for ""anticipated loss of profits"", and disputes will be adjudicated by a tribunal of corporate appointed lawyers.",
+	                            IsPresidential = true,
+	                            ElectionYear = 2016,
+	                            PrimaryDate = state.PrimaryDate,
+	                            ConventionDate = (target.Party == "Democratic") ? state.DemConventionDate : state.RepubConventionDate,
+	                            GeneralDate = new DateTime(2016, 11, 8),
+	                            TargetMacroRegion = "US",
+	                            TargetElectoralRegionName = state.StateName,
+	                            TargetElectoralRegionAbbreviation = state.StateAbbreviation,
+	                            PrezCampaignPhaseViewModels = new List<PrezCampaignPhaseViewModel>()
+	                            {
+	                                // for pres campaign, inject primaryDate, xxxconventionDate, generalDate, 
+	
+	                                new PrezCampaignPhaseViewModel(target.Party, state.PrimaryDate)
+	                                {
+	                                    Number = 1,
+	                                    EndDate = state.PrimaryDate,    // primary date
+	                                    VoteslingerPrimaryDeadline  =  state.PrimaryDate.AddDays(-14),   // primary date minus 2 weeks
+	                                    VoteslingerGeneralDeadline  = state.GeneralDate.AddDays(-28),    // general date minus 4 weeks
+	                                    PledgeDeadline = new DateTime(2016, 5, 10 ),    // primary date minus 2 weeks
+	                                    PledgeFulfillmentDeadline = state.PrimaryDate.AddDays(-3),   // primary date minus 3 days
+	                                    Redline = target.Name + " must declare unequivocal opposition to same on his/her primary website, and do a whip count of firm opposition to TPP by members of Congress",
+	                                
+	                                
+	                                    //RegionName = state.StateName,
+	                                    //RegionAbbreviation = state.StateAbbreviation,
+	                                    //PrimaryDate = state.PrimaryDate,
+	                                    //GeneralDate = state.GeneralDate,
+	
+	
+	                                },
+	
+	
+	                                new PrezCampaignPhaseViewModel(target.Party, state.PrimaryDate)
+	                                {
+	                                    Number = 2,
+	                                    EndDate = state.GeneralDate,   // general date
+	                                    VoteslingerPrimaryDeadline  = state.PrimaryDate.AddDays(-14),    // primary date minus 2 weeks
+	                                    VoteslingerGeneralDeadline  = state.GeneralDate.AddDays(-28),    // general date minus 4 weeks
+	                                    PledgeDeadline = state.GeneralDate.AddDays(-28),   // general date minus 4 weeks
+	                                    PledgeFulfillmentDeadline = state.GeneralDate.AddDays(-5),   // general date minus 5 days
+	                                    Redline = target.Name + " must declare unequivocal opposition to same on his/her primary website, and do a whip count of firm opposition to TPP by members of Congress",
+	                                
+	                                },
+	
+	
+	
+	                                //new PrezCampaignPhaseViewModel()
+	                                //{
+	                                //    Number = 2,
+	                                //    Redline = target.Name + " must declare unequivocal opposition to same on his/her primary website, and do a whip count of firm opposition to TPP by members of Congress",
+	                                //    RegionName = state.StateName,
+	                                //    RegionAbbreviation = state.StateAbbreviation,
+	                                //    //PrimaryDate = null,
+	                                //    GeneralDate = new DateTime(2016, 11, 8),
+	                                //    PledgeDeadline = new DateTime(2016, 5, 10 ),
+	                                //    PledgeFulfillmentDeadline = new DateTime(2016, 5, 16),
+	                                //    EndDate = new DateTime(2016, 5, 17)
+	                                //}
+	                            }
+	                        };
+                        prezCampaignViewModels.Add(prezCampaignViewModel);
+                    }
                 
 
-                    prezCampaignViewModels.Add(prezCampaignViewModel);
+
 
                 }
 

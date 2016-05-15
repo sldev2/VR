@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Seed Code for Targets and their Posses";
+    int i = 0;
+    int j = 0;
 }
 
 <h2>Targets</h2>
@@ -81,52 +83,66 @@
                 // ================================================================================
                 // US Presidential
                 // ================================================================================ 
+                Posse posseToAddCampaign;
+                List&lt;Campaign&gt; campaigns = new List&lt;Campaign&gt;();
 </pre>
-@foreach (var item in Model.Target_TemplateInfos.Where(it => it.Region == "US"))
+
+
+@{var lastcamp = Model.PrezCampaignViewModels.Last();}
+
+@foreach (var camp in Model.PrezCampaignViewModels)
 {
 
-
-    foreach (var camp in Model.PrezCampaignViewModels)
-    {
-
+    i++;
+    //if (i > 1) { break; }
 
 
-        <pre> 
-                TargetId = <text>target</text>@(item.Name.Replace(" ", "_").Replace(".","")).Id;
-                var posseToAddCampaign = context.Posses.Find(TargetId);
-                posseToAddCampaign.Campaigns = new List<campaign>()
+    <pre> 
+                TargetId = @(camp.targetHandle).Id;
+                posseToAddCampaign = context.Posses.Find(TargetId);
+                campaigns = new List&lt;Campaign&gt;()
                 {
                    
                     new Campaign()
                     {
-                        Name =  @camp.Name,   //"Wake up the @item.Party Party on TPP, Mr. Trump!",   
+                        Name =  "@(camp.Name)",     
                         IsMultiphasic = true,
                         Issue = "The Trans-Pacific Partnership, TPP",
                         TargetMacroRegion = "USA",
                         TargetElectoralRegionName = "@(camp.TargetElectoralRegionName)",
-                        TargetElectoralRegionAbbreviation = "NJ",
+                        TargetElectoralRegionAbbreviation = "@(camp.TargetElectoralRegionAbbreviation)",
                         ElectionYear = 2016,
-                        @if (item.ConventionDate != null)                    
+                        @if (camp.ConventionDate != null)                    
                         {
-                        <text>ConventionDate =  new DateTime(@((@item.ConventionDate.Value).Year), @((@item.ConventionDate.Value).Month), @((@item.ConventionDate.Value).Day)),  </text>
+                        <text>ConventionDate =  new DateTime(@((@camp.ConventionDate.Value).Year), @((@camp.ConventionDate.Value).Month), @((@camp.ConventionDate.Value).Day)),  </text>
                         }  else {
                         <text>ConventionDate = null, </text>
                         } 
-                        <text>GeneralElectionDate =  new DateTime(@((@item.GeneralElectionDate).Year), @((@item.GeneralElectionDate).Month), @((@item.GeneralElectionDate).Day)),  </text>
+    <text>PrimaryDate =  new DateTime(@((@camp.PrimaryDate.Value).Year), @((@camp.PrimaryDate.Value).Month), @((@camp.PrimaryDate.Value).Day)),  </text>
+    <text>GeneralDate =  new DateTime(@((@camp.GeneralDate).Year), @((@camp.GeneralDate).Month), @((@camp.GeneralDate).Day)),  </text>
                         IsPresidential = true,
                         UltimateRedline = null,
                         Info = @@"Possibly the worst piece of legislation in US history, TPP promises to subvert Constitutional order in favor of multinational corporations. These corporations will be able to sue for ""anticipated loss of profits"", and disputes will be adjudicated by a tribunal of corporate appointed lawyers.",
-                        CampaignPhases = new List<campaignphase>()
+                        CampaignPhases = new List&lt;CampaignPhase&gt;()
                         {
+                         
+                         
+                        @{var lastcampPhase =  camp.PrezCampaignPhaseViewModels.Last();}     
+                        @foreach (var campPhase in camp.PrezCampaignPhaseViewModels)
+                        {
+                            j++;
+                            //if (j > 1) { break; }
+    <pre>
+                            
                             new CampaignPhase()
                             {
-                                Number = 1,
-                                EndDate = new DateTime(2016, 6, 7),   // NJ Primary Day
+                                Number = @campPhase.Number,
+    <text>EndDate =  new DateTime(@((@campPhase.EndDate).Year), @((@campPhase.EndDate).Month), @((@campPhase.EndDate).Day)),  </text>   //  Primary Day
                                 VoteslingerPrimaryDeadline = new DateTime(2016, 5, 24),
                                 VoteslingerGeneralDeadline = new DateTime(2016, 10, 11),
                                 PledgeDeadline = new DateTime(2016, 5, 24),  
                                 PledgeFulfillmentDeadline = new DateTime(2016, 6, 6),
-                                DefaultPledgeIds = new List<int>()
+                                DefaultPledgeIds = new List&lt;int&gt;()
                                 {
                                     1,
                                     2,
@@ -135,58 +151,27 @@
                                     5,
                                     6
                                 },
-                                Redline = "Trump must lobby the Republicans in Congress on TPP and both publish the results on his website and give a press conference on the results."
+                                Redline = "@camp.targetName must lobby the Republicans in Congress on TPP and both publish the results on his website and give a press conference on the results."
                            
-                            },
-                            new CampaignPhase()
-                            {
-                                Number = 2,
-                                EndDate = new DateTime(2016, 11, 8),   // Election Day
-                                VoteslingerPrimaryDeadline = null,
-                                VoteslingerGeneralDeadline = new DateTime(2016, 10, 11),
-                                PledgeDeadline = new DateTime(2016, 10, 11),
-                                PledgeFulfillmentDeadline = new DateTime(2016, 11, 7),  
-                                DefaultPledgeIds = new List<int>()
-                                {
-                                    1,
-                                    2,
-                                    3,
-                                    4,
-                                    5,
-                                    6
-                                },
-                                Redline = "Trump must condemn the silence of the Republican Party rank and file (in Congress) on TPP"
-                            },
-                            new CampaignPhase()
-                            {
-                                Number = 3,
-                                EndDate = new DateTime(2017, 1, 20),   // Inauguration Day 
-                                VoteslingerPrimaryDeadline = null,
-                                VoteslingerGeneralDeadline = null,
-                                PledgeDeadline = new DateTime(2017, 3, 11),  
-                                PledgeFulfillmentDeadline = new DateTime(2017, 1, 19),
-                                DefaultPledgeIds = new List<int>()
-                                {
-                                    1,
-                                    2,
-                                    3,
-                                    4,
-                                    5,
-                                    6
-                                },
-                                Redline = "Trump must lead a protest against TPP in Washington, D.C."
-                            }
-                        }
-                    }
-		        };
-    </pre>
+                            }  //close CampaignPhase 
+                            @if (campPhase != lastcampPhase)
+                               {<text>,</text>}
+            </pre>
+                        }   // close CampaignPhases
+                     }   // close Campaign    
 
+                    }   // close Campaigns 
+                };  
+        posseToAddCampaign.Campaigns.AddRange(campaigns);
+        context.SaveChanges(); 
+        </pre>
 
-    }
 
 }
 
-<pre>context.SaveChanges();</pre>
+
+
+
 
 <pre>
                 // ================================================================================
@@ -195,91 +180,93 @@
 </pre>
 
 
-@foreach (var item in Model.Target_TemplateInfos.Where(it => it.Region != "US"))
+@foreach (var camp in Model.CongressCampaignViewModels)
 {
-<pre> 
-                TargetId = <text>target</text>@(item.Name.Replace(" ", "_").Replace(".","")).Id;
-                var posseToAddCampaign = context.Posses.Find(TargetId);
-                posseToAddCampaign.Campaigns = new List<campaign>()
-                {
-                   
-                    new Campaign()
-                    {
-                        Name = "Wake up the @item.Party Party on TPP, Mr. Trump!",   
-                        IsMultiphasic = true,
-                        Issue = "The Trans-Pacific Partnership, TPP",
-                        TargetMacroRegion = "USA",
-                        TargetElectoralRegionName = "New Jersey",
-                        TargetElectoralRegionAbbreviation = "NJ",
-                        ElectionYear = 2016,
-                        PrimaryDate = new DateTime(2016, 6, 7),
-                        GeneralDate = new DateTime(2016, 11, 8),
-                        IsPresidential = true,
-                        UltimateRedline = null,
-                        Info = @@"Possibly the worst piece of legislation in US history, TPP promises to subvert Constitutional order in favor of multinational corporations. These corporations will be able to sue for ""anticipated loss of profits"", and disputes will be adjudicated by a tribunal of corporate appointed lawyers.",
-                        CampaignPhases = new List<campaignphase>()
+
+    @*<pre>
+                        TargetId = <text>target</text>@(camp.Name.Replace(" ", "_").Replace(".","")).Id;
+                        var posseToAddCampaign = context.Posses.Find(TargetId);
+                        posseToAddCampaign.Campaigns = new List&lt;campaign>()
                         {
-                            new CampaignPhase()
+
+                            new Campaign()
                             {
-                                Number = 1,
-                                EndDate = new DateTime(2016, 6, 7),   // NJ Primary Day
-                                VoteslingerPrimaryDeadline = new DateTime(2016, 5, 24),
-                                VoteslingerGeneralDeadline = new DateTime(2016, 10, 11),
-                                PledgeDeadline = new DateTime(2016, 5, 24),  
-                                PledgeFulfillmentDeadline = new DateTime(2016, 6, 6),
-                                DefaultPledgeIds = new List<int>()
+                                Name = @camp.Name,
+                                IsMultiphasic = true,
+                                Issue = "The Trans-Pacific Partnership, TPP",
+                                TargetMacroRegion = "USA",
+                                TargetElectoralRegionName = "New Jersey",
+                                TargetElectoralRegionAbbreviation = "NJ",
+                                ElectionYear = 2016,
+                                PrimaryDate = new DateTime(2016, 6, 7),
+                                GeneralDate = new DateTime(2016, 11, 8),
+                                IsPresidential = true,
+                                UltimateRedline = null,
+                                Info = @@"Possibly the worst piece of legislation in US history, TPP promises to subvert Constitutional order in favor of multinational corporations. These corporations will be able to sue for ""anticipated loss of profits"", and disputes will be adjudicated by a tribunal of corporate appointed lawyers.",
+                                CampaignPhases = new List&lt;campaignphase>()
                                 {
-                                    1,
-                                    2,
-                                    3,
-                                    4,
-                                    5,
-                                    6
-                                },
-                                Redline = "Trump must lobby the Republicans in Congress on TPP and both publish the results on his website and give a press conference on the results."
-                           
-                            },
-                            new CampaignPhase()
-                            {
-                                Number = 2,
-                                EndDate = new DateTime(2016, 11, 8),   // Election Day
-                                VoteslingerPrimaryDeadline = null,
-                                VoteslingerGeneralDeadline = new DateTime(2016, 10, 11),
-                                PledgeDeadline = new DateTime(2016, 10, 11),
-                                PledgeFulfillmentDeadline = new DateTime(2016, 11, 7),  
-                                DefaultPledgeIds = new List<int>()
-                                {
-                                    1,
-                                    2,
-                                    3,
-                                    4,
-                                    5,
-                                    6
-                                },
-                                Redline = "Trump must condemn the silence of the Republican Party rank and file (in Congress) on TPP"
-                            },
-                            new CampaignPhase()
-                            {
-                                Number = 3,
-                                EndDate = new DateTime(2017, 1, 20),   // Inauguration Day 
-                                VoteslingerPrimaryDeadline = null,
-                                VoteslingerGeneralDeadline = null,
-                                PledgeDeadline = new DateTime(2017, 3, 11),  
-                                PledgeFulfillmentDeadline = new DateTime(2017, 1, 19),
-                                DefaultPledgeIds = new List<int>()
-                                {
-                                    1,
-                                    2,
-                                    3,
-                                    4,
-                                    5,
-                                    6
-                                },
-                                Redline = "Trump must lead a protest against TPP in Washington, D.C."
+                                    new CampaignPhase()
+                                    {
+                                        Number = 1,
+                                        EndDate = new DateTime(2016, 6, 7),   // NJ Primary Day
+                                        VoteslingerPrimaryDeadline = new DateTime(2016, 5, 24),
+                                        VoteslingerGeneralDeadline = new DateTime(2016, 10, 11),
+                                        PledgeDeadline = new DateTime(2016, 5, 24),
+                                        PledgeFulfillmentDeadline = new DateTime(2016, 6, 6),
+                                        DefaultPledgeIds = new List&lt;int>()
+                                        {
+                                            1,
+                                            2,
+                                            3,
+                                            4,
+                                            5,
+                                            6
+                                        },
+                                        Redline = "Trump must lobby the Republicans in Congress on TPP and both publish the results on his website and give a press conference on the results."
+
+                                    },
+                                    new CampaignPhase()
+                                    {
+                                        Number = 2,
+                                        EndDate = new DateTime(2016, 11, 8),   // Election Day
+                                        VoteslingerPrimaryDeadline = null,
+                                        VoteslingerGeneralDeadline = new DateTime(2016, 10, 11),
+                                        PledgeDeadline = new DateTime(2016, 10, 11),
+                                        PledgeFulfillmentDeadline = new DateTime(2016, 11, 7),
+                                        DefaultPledgeIds = new List&lt;int>()
+                                        {
+                                            1,
+                                            2,
+                                            3,
+                                            4,
+                                            5,
+                                            6
+                                        },
+                                        Redline = "Trump must condemn the silence of the Republican Party rank and file (in Congress) on TPP"
+                                    },
+                                    new CampaignPhase()
+                                    {
+                                        Number = 3,
+                                        EndDate = new DateTime(2017, 1, 20),   // Inauguration Day
+                                        VoteslingerPrimaryDeadline = null,
+                                        VoteslingerGeneralDeadline = null,
+                                        PledgeDeadline = new DateTime(2017, 3, 11),
+                                        PledgeFulfillmentDeadline = new DateTime(2017, 1, 19),
+                                        DefaultPledgeIds = new List&lt;int>()
+                                        {
+                                            1,
+                                            2,
+                                            3,
+                                            4,
+                                            5,
+                                            6
+                                        },
+                                        Redline = "Trump must lead a protest against TPP in Washington, D.C."
+                                    }
+                                }
                             }
-                        }
-                    }
-		        };
-</pre>
+                        };
+        </pre>*@
+
 }
 <pre>context.SaveChanges();</pre>
