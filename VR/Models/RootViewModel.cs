@@ -136,33 +136,42 @@ namespace VR.Models
 
     public class PrezCampaignStateParticulars
     {
-        public string Party { get; set; }
+
+        private string _party;
+
+
+        public string Party 
+        { 
+            get; 
+            set; 
+        }
         public string StateName { get; set; }
         public string StateAbbreviation { get; set; }
-        public DateTime RepubConventionDate 
-        { 
-            get
-            {
-                return new DateTime(2016, 7, 18);
-            }
+        public DateTime ConventionDate { get; set; }
+        //public DateTime RepubConventionDate 
+        //{ 
+        //    get
+        //    {
+        //        return new DateTime(2016, 7, 18);
+        //    }
             
-        }
-        public DateTime DemConventionDate
-        {
-            get
-            {
-                return new DateTime(2016, 7, 25);
-            }
+        //}
+        //public DateTime DemConventionDate
+        //{
+        //    get
+        //    {
+        //        return new DateTime(2016, 7, 25);
+        //    }
 
-        }
-        public DateTime GreenConventionDate
-        {
-            get
-            {
-                return new DateTime(2016, 8, 6);
-            }
+        //}
+        //public DateTime GreenConventionDate
+        //{
+        //    get
+        //    {
+        //        return new DateTime(2016, 8, 6);
+        //    }
 
-        }
+        //}
         public DateTime PrimaryDate { get; set; }
         public DateTime GeneralDate { get; set; }
         //public DateTime PhasePledgeDeadline { get; set; }

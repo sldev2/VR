@@ -25,9 +25,9 @@
                     GeneralElectionDate = new DateTime(@item.GeneralElectionDate.Year, @item.GeneralElectionDate.Month, @item.GeneralElectionDate.Day), 
                     @if (item.PrimaryDate != null)                    
                     {
-                    <text>PrimaryDate =  new DateTime(@((@item.PrimaryDate.Value).Year), @((@item.PrimaryDate.Value).Month), @((@item.PrimaryDate.Value).Day)),  </text>
+                    <text>PrimaryDate =  new DateTime(@((@item.PrimaryDate).Year), @((@item.PrimaryDate).Month), @((@item.PrimaryDate).Day)),  </text>
                     }  else {
-                    <text>PrimaryDate = null, </text>
+                    <text>PrimaryDate = new DateTime(2016, 1, 1), </text>
                     } 
                     @if (item.ConventionDate != null)                    
                     {
@@ -88,7 +88,7 @@
 </pre>
 
 
-@{var lastcamp = Model.PrezCampaignViewModels.Last();}
+
 
 @foreach (var camp in Model.PrezCampaignViewModels)
 {
@@ -99,7 +99,7 @@
 
     <pre> 
                 TargetId = @(camp.targetHandle).Id;
-                posseToAddCampaign = context.Posses.Find(TargetId);
+                posseToAddCampaign =  context.Posses.Where(x => x.TargetId == TargetId).First();
                 campaigns = new List&lt;Campaign&gt;()
                 {
                    
@@ -118,8 +118,8 @@
                         }  else {
                         <text>ConventionDate = null, </text>
                         } 
-    <text>PrimaryDate =  new DateTime(@((@camp.PrimaryDate.Value).Year), @((@camp.PrimaryDate.Value).Month), @((@camp.PrimaryDate.Value).Day)),  </text>
-    <text>GeneralDate =  new DateTime(@((@camp.GeneralDate).Year), @((@camp.GeneralDate).Month), @((@camp.GeneralDate).Day)),  </text>
+                        <text>PrimaryDate =  new DateTime(@((@camp.PrimaryDate.Value).Year), @((@camp.PrimaryDate.Value).Month), @((@camp.PrimaryDate.Value).Day)),  </text>
+                        <text>GeneralDate =  new DateTime(@((@camp.GeneralDate).Year), @((@camp.GeneralDate).Month), @((@camp.GeneralDate).Day)),  </text>
                         IsPresidential = true,
                         UltimateRedline = null,
                         Info = @@"Possibly the worst piece of legislation in US history, TPP promises to subvert Constitutional order in favor of multinational corporations. These corporations will be able to sue for ""anticipated loss of profits"", and disputes will be adjudicated by a tribunal of corporate appointed lawyers.",
@@ -131,17 +131,17 @@
                         @foreach (var campPhase in camp.PrezCampaignPhaseViewModels)
                         {
                             j++;
-                            //if (j > 1) { break; }
+                           // if (j > 1) { break; }
     <pre>
                             
                             new CampaignPhase()
                             {
                                 Number = @campPhase.Number,
-    <text>EndDate =  new DateTime(@((@campPhase.EndDate).Year), @((@campPhase.EndDate).Month), @((@campPhase.EndDate).Day)),  </text>   //  Primary Day
-                                VoteslingerPrimaryDeadline = new DateTime(2016, 5, 24),
-                                VoteslingerGeneralDeadline = new DateTime(2016, 10, 11),
-                                PledgeDeadline = new DateTime(2016, 5, 24),  
-                                PledgeFulfillmentDeadline = new DateTime(2016, 6, 6),
+                                <text>EndDate =  new DateTime(@((@campPhase.EndDate).Year), @((@campPhase.EndDate).Month), @((@campPhase.EndDate).Day)),  </text>   //  Primary Day
+                                <text>VoteslingerPrimaryDeadline =  new DateTime(@((@campPhase.VoteslingerPrimaryDeadline).Year), @((@campPhase.VoteslingerPrimaryDeadline).Month), @((@campPhase.VoteslingerPrimaryDeadline).Day)),  </text>   
+                                <text>VoteslingerGeneralDeadline =  new DateTime(@((@campPhase.VoteslingerGeneralDeadline).Year), @((@campPhase.VoteslingerGeneralDeadline).Month), @((@campPhase.VoteslingerGeneralDeadline).Day)),  </text>   
+                                <text>PledgeDeadline =  new DateTime(@((@campPhase.PledgeDeadline).Year), @((@campPhase.PledgeDeadline).Month), @((@campPhase.PledgeDeadline).Day)),  </text>   
+                                <text>PledgeFulfillmentDeadline =  new DateTime(@((@campPhase.PledgeFulfillmentDeadline).Year), @((@campPhase.PledgeFulfillmentDeadline).Month), @((@campPhase.PledgeFulfillmentDeadline).Day)),  </text>   
                                 DefaultPledgeIds = new List&lt;int&gt;()
                                 {
                                     1,
@@ -151,7 +151,7 @@
                                     5,
                                     6
                                 },
-                                Redline = "@camp.targetName must lobby the Republicans in Congress on TPP and both publish the results on his website and give a press conference on the results."
+                                Redline = "@camp.targetName must lobby all current members of Congress on TPP and both publish the results on his or her website and give a press conference on the results."
                            
                             }  //close CampaignPhase 
                             @if (campPhase != lastcampPhase)
@@ -268,5 +268,83 @@
                         };
         </pre>*@
 
+
+
+
+
+    i++;
+    //if (i > 1) { break; }
+
+
+    <pre> 
+                TargetId = @(camp.targetHandle).Id;
+                posseToAddCampaign =  context.Posses.Where(x => x.TargetId == TargetId).First();
+                campaigns = new List&lt;Campaign&gt;()
+                {
+                   
+                    new Campaign()
+                    {
+                        Name =  "@(camp.Name)",     
+                        IsMultiphasic = true,
+                        Issue = "The Trans-Pacific Partnership, TPP",
+                        TargetMacroRegion = "USA",
+                        TargetElectoralRegionName = "@(camp.TargetElectoralRegionName)",
+                        TargetElectoralRegionAbbreviation = "@(camp.TargetElectoralRegionAbbreviation)",
+                        ElectionYear = 2016,
+                        @if (camp.ConventionDate != null)                    
+                        {
+                        <text>ConventionDate =  new DateTime(@((@camp.ConventionDate.Value).Year), @((@camp.ConventionDate.Value).Month), @((@camp.ConventionDate.Value).Day)),  </text>
+                        }  else {
+                        <text>ConventionDate = null, </text>
+                        } 
+                        <text>PrimaryDate =  new DateTime(@((@camp.PrimaryDate.Value).Year), @((@camp.PrimaryDate.Value).Month), @((@camp.PrimaryDate.Value).Day)),  </text>
+                        <text>GeneralDate =  new DateTime(@((@camp.GeneralDate).Year), @((@camp.GeneralDate).Month), @((@camp.GeneralDate).Day)),  </text>
+                        IsPresidential = false,
+                        UltimateRedline = null,
+                        Info = @@"Possibly the worst piece of legislation in US history, TPP promises to subvert Constitutional order in favor of multinational corporations. These corporations will be able to sue for ""anticipated loss of profits"", and disputes will be adjudicated by a tribunal of corporate appointed lawyers.",
+                        CampaignPhases = new List&lt;CampaignPhase&gt;()
+                        {
+                         
+                         
+                        @{var lastcampPhase = camp.PrezCampaignPhaseViewModels.Last();}     
+                        @foreach (var campPhase in camp.PrezCampaignPhaseViewModels)
+                        {
+                            j++;
+                            //if (j > 1) { break; }
+    <pre>
+                            
+                            new CampaignPhase()
+                            {
+                                Number = @campPhase.Number,
+                                <text>EndDate =  new DateTime(@((@campPhase.EndDate).Year), @((@campPhase.EndDate).Month), @((@campPhase.EndDate).Day)),  </text>   //  Primary Day
+                                <text>VoteslingerPrimaryDeadline =  new DateTime(@((@campPhase.VoteslingerPrimaryDeadline).Year), @((@campPhase.VoteslingerPrimaryDeadline).Month), @((@campPhase.VoteslingerPrimaryDeadline).Day)),  </text>   
+                                <text>VoteslingerGeneralDeadline =  new DateTime(@((@campPhase.VoteslingerGeneralDeadline).Year), @((@campPhase.VoteslingerGeneralDeadline).Month), @((@campPhase.VoteslingerGeneralDeadline).Day)),  </text>   
+                                <text>PledgeDeadline =  new DateTime(@((@campPhase.PledgeDeadline).Year), @((@campPhase.PledgeDeadline).Month), @((@campPhase.PledgeDeadline).Day)),  </text>   
+                                <text>PledgeFulfillmentDeadline =  new DateTime(@((@campPhase.PledgeFulfillmentDeadline).Year), @((@campPhase.PledgeFulfillmentDeadline).Month), @((@campPhase.PledgeFulfillmentDeadline).Day)),  </text>   
+                                DefaultPledgeIds = new List&lt;int&gt;()
+                                {
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    5,
+                                    6
+                                },
+                                Redline = "@camp.targetName must lobby all current members of Congress on TPP and both publish the results on his website and give a press conference on the results."
+                           
+                            }  //close CampaignPhase 
+                            @if (campPhase != lastcampPhase)
+                               {<text>,</text>}
+            </pre>
+                        }   // close CampaignPhases
+                     }   // close Campaign    
+                    }   // close Campaigns 
+                };  
+        posseToAddCampaign.Campaigns.AddRange(campaigns);
+        context.SaveChanges(); 
+        </pre>
+
+
+
+
 }
-<pre>context.SaveChanges();</pre>
