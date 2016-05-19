@@ -42,7 +42,9 @@
                 context.Targets.Add(target@(item.Name.Replace(" ", "_").Replace(".", "")));
             </pre>
 }
-
+<pre>             
+                  context.SaveChanges(); 
+</pre>
 
 
 <pre>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// </pre>
@@ -64,7 +66,9 @@
                   ); 
      </pre>
 }
-
+<pre>             
+                  context.SaveChanges(); 
+</pre>
 
 
 <pre>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// </pre>
@@ -118,8 +122,8 @@
                         }  else {
                         <text>ConventionDate = null, </text>
                         } 
-                        <text>PrimaryDate =  new DateTime(@((@camp.PrimaryDate.Value).Year), @((@camp.PrimaryDate.Value).Month), @((@camp.PrimaryDate.Value).Day)),  </text>
-                        <text>GeneralDate =  new DateTime(@((@camp.GeneralDate).Year), @((@camp.GeneralDate).Month), @((@camp.GeneralDate).Day)),  </text>
+    <text>PrimaryDate =  new DateTime(@((@camp.PrimaryDate.Value).Year), @((@camp.PrimaryDate.Value).Month), @((@camp.PrimaryDate.Value).Day)),  </text>
+    <text>GeneralDate =  new DateTime(@((@camp.GeneralDate).Year), @((@camp.GeneralDate).Month), @((@camp.GeneralDate).Day)),  </text>
                         IsPresidential = true,
                         UltimateRedline = null,
                         Info = @@"Possibly the worst piece of legislation in US history, TPP promises to subvert Constitutional order in favor of multinational corporations. These corporations will be able to sue for ""anticipated loss of profits"", and disputes will be adjudicated by a tribunal of corporate appointed lawyers.",
@@ -137,11 +141,11 @@
                             new CampaignPhase()
                             {
                                 Number = @campPhase.Number,
-                                <text>EndDate =  new DateTime(@((@campPhase.EndDate).Year), @((@campPhase.EndDate).Month), @((@campPhase.EndDate).Day)),  </text>   //  Primary Day
-                                <text>VoteslingerPrimaryDeadline =  new DateTime(@((@campPhase.VoteslingerPrimaryDeadline).Year), @((@campPhase.VoteslingerPrimaryDeadline).Month), @((@campPhase.VoteslingerPrimaryDeadline).Day)),  </text>   
-                                <text>VoteslingerGeneralDeadline =  new DateTime(@((@campPhase.VoteslingerGeneralDeadline).Year), @((@campPhase.VoteslingerGeneralDeadline).Month), @((@campPhase.VoteslingerGeneralDeadline).Day)),  </text>   
-                                <text>PledgeDeadline =  new DateTime(@((@campPhase.PledgeDeadline).Year), @((@campPhase.PledgeDeadline).Month), @((@campPhase.PledgeDeadline).Day)),  </text>   
-                                <text>PledgeFulfillmentDeadline =  new DateTime(@((@campPhase.PledgeFulfillmentDeadline).Year), @((@campPhase.PledgeFulfillmentDeadline).Month), @((@campPhase.PledgeFulfillmentDeadline).Day)),  </text>   
+    <text>EndDate =  new DateTime(@((@campPhase.EndDate).Year), @((@campPhase.EndDate).Month), @((@campPhase.EndDate).Day)),  </text>   //  Primary Day
+    <text>VoteslingerPrimaryDeadline =  new DateTime(@((@campPhase.VoteslingerPrimaryDeadline).Year), @((@campPhase.VoteslingerPrimaryDeadline).Month), @((@campPhase.VoteslingerPrimaryDeadline).Day)),  </text>   
+    <text>VoteslingerGeneralDeadline =  new DateTime(@((@campPhase.VoteslingerGeneralDeadline).Year), @((@campPhase.VoteslingerGeneralDeadline).Month), @((@campPhase.VoteslingerGeneralDeadline).Day)),  </text>   
+    <text>PledgeDeadline =  new DateTime(@((@campPhase.PledgeDeadline).Year), @((@campPhase.PledgeDeadline).Month), @((@campPhase.PledgeDeadline).Day)),  </text>   
+    <text>PledgeFulfillmentDeadline =  new DateTime(@((@campPhase.PledgeFulfillmentDeadline).Year), @((@campPhase.PledgeFulfillmentDeadline).Month), @((@campPhase.PledgeFulfillmentDeadline).Day)),  </text>   
                                 DefaultPledgeIds = new List&lt;int&gt;()
                                 {
                                     1,
@@ -159,7 +163,6 @@
             </pre>
                         }   // close CampaignPhases
                      }   // close Campaign    
-
                     }   // close Campaigns 
                 };  
         posseToAddCampaign.Campaigns.AddRange(campaigns);
@@ -297,8 +300,8 @@
                         }  else {
                         <text>ConventionDate = null, </text>
                         } 
-                        <text>PrimaryDate =  new DateTime(@((@camp.PrimaryDate.Value).Year), @((@camp.PrimaryDate.Value).Month), @((@camp.PrimaryDate.Value).Day)),  </text>
-                        <text>GeneralDate =  new DateTime(@((@camp.GeneralDate).Year), @((@camp.GeneralDate).Month), @((@camp.GeneralDate).Day)),  </text>
+    <text>PrimaryDate =  new DateTime(@((@camp.PrimaryDate.Value).Year), @((@camp.PrimaryDate.Value).Month), @((@camp.PrimaryDate.Value).Day)),  </text>
+    <text>GeneralDate =  new DateTime(@((@camp.GeneralDate).Year), @((@camp.GeneralDate).Month), @((@camp.GeneralDate).Day)),  </text>
                         IsPresidential = false,
                         UltimateRedline = null,
                         Info = @@"Possibly the worst piece of legislation in US history, TPP promises to subvert Constitutional order in favor of multinational corporations. These corporations will be able to sue for ""anticipated loss of profits"", and disputes will be adjudicated by a tribunal of corporate appointed lawyers.",
@@ -316,11 +319,11 @@
                             new CampaignPhase()
                             {
                                 Number = @campPhase.Number,
-                                <text>EndDate =  new DateTime(@((@campPhase.EndDate).Year), @((@campPhase.EndDate).Month), @((@campPhase.EndDate).Day)),  </text>   //  Primary Day
-                                <text>VoteslingerPrimaryDeadline =  new DateTime(@((@campPhase.VoteslingerPrimaryDeadline).Year), @((@campPhase.VoteslingerPrimaryDeadline).Month), @((@campPhase.VoteslingerPrimaryDeadline).Day)),  </text>   
-                                <text>VoteslingerGeneralDeadline =  new DateTime(@((@campPhase.VoteslingerGeneralDeadline).Year), @((@campPhase.VoteslingerGeneralDeadline).Month), @((@campPhase.VoteslingerGeneralDeadline).Day)),  </text>   
-                                <text>PledgeDeadline =  new DateTime(@((@campPhase.PledgeDeadline).Year), @((@campPhase.PledgeDeadline).Month), @((@campPhase.PledgeDeadline).Day)),  </text>   
-                                <text>PledgeFulfillmentDeadline =  new DateTime(@((@campPhase.PledgeFulfillmentDeadline).Year), @((@campPhase.PledgeFulfillmentDeadline).Month), @((@campPhase.PledgeFulfillmentDeadline).Day)),  </text>   
+    <text>EndDate =  new DateTime(@((@campPhase.EndDate).Year), @((@campPhase.EndDate).Month), @((@campPhase.EndDate).Day)),  </text>   //  Primary Day
+    <text>VoteslingerPrimaryDeadline =  new DateTime(@((@campPhase.VoteslingerPrimaryDeadline).Year), @((@campPhase.VoteslingerPrimaryDeadline).Month), @((@campPhase.VoteslingerPrimaryDeadline).Day)),  </text>   
+    <text>VoteslingerGeneralDeadline =  new DateTime(@((@campPhase.VoteslingerGeneralDeadline).Year), @((@campPhase.VoteslingerGeneralDeadline).Month), @((@campPhase.VoteslingerGeneralDeadline).Day)),  </text>   
+    <text>PledgeDeadline =  new DateTime(@((@campPhase.PledgeDeadline).Year), @((@campPhase.PledgeDeadline).Month), @((@campPhase.PledgeDeadline).Day)),  </text>   
+    <text>PledgeFulfillmentDeadline =  new DateTime(@((@campPhase.PledgeFulfillmentDeadline).Year), @((@campPhase.PledgeFulfillmentDeadline).Month), @((@campPhase.PledgeFulfillmentDeadline).Day)),  </text>   
                                 DefaultPledgeIds = new List&lt;int&gt;()
                                 {
                                     1,
