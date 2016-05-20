@@ -11,13 +11,13 @@ namespace VR.Models.Mapping
             this.HasKey(t => t.Id);
 
             // Properties
-            this.Property(t => t.TargetMacroRegion)
+            this.Property(t => t.TargetRegion)
                 .IsRequired();
 
-            this.Property(t => t.TargetElectoralRegionName)
+            this.Property(t => t.TargetStateName)
                 .IsRequired();
 
-            this.Property(t => t.TargetElectoralRegionAbbreviation)
+            this.Property(t => t.TargetStateAbbreviation)
                 .IsRequired();
 
             // Table & Column Mappings
@@ -33,9 +33,9 @@ namespace VR.Models.Mapping
             this.Property(t => t.ElectionYear).HasColumnName("ElectionYear");
             this.Property(t => t.PrimaryDate).HasColumnName("PrimaryDate");
             this.Property(t => t.GeneralDate).HasColumnName("GeneralDate");
-            this.Property(t => t.TargetMacroRegion).HasColumnName("TargetMacroRegion");
-            this.Property(t => t.TargetElectoralRegionName).HasColumnName("TargetElectoralRegionName");
-            this.Property(t => t.TargetElectoralRegionAbbreviation).HasColumnName("TargetElectoralRegionAbbreviation");
+            this.Property(t => t.TargetRegion).HasColumnName("TargetRegion");
+            this.Property(t => t.TargetStateName).HasColumnName("TargetStateName");
+            this.Property(t => t.TargetStateAbbreviation).HasColumnName("TargetStateAbbreviation");
 
             // Relationships
             this.HasRequired(t => t.Poss)

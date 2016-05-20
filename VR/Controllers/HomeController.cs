@@ -225,9 +225,9 @@ namespace VR.Controllers
 	                            PrimaryDate = state.PrimaryDate,
 	                            ConventionDate = state.ConventionDate,
 	                            GeneralDate = new DateTime(2016, 11, 8),
-	                            TargetMacroRegion = "US",
-	                            TargetElectoralRegionName = state.StateName,
-	                            TargetElectoralRegionAbbreviation = state.StateAbbreviation,
+	                            TargetRegion = "US",
+	                            TargetStateName = state.StateName,
+	                            TargetStateAbbreviation = state.StateAbbreviation,
 	                            PrezCampaignPhaseViewModels = new List<PrezCampaignPhaseViewModel>()
 	                            {
 	                                // for pres campaign, inject primaryDate, xxxconventionDate, generalDate, 
@@ -344,9 +344,9 @@ namespace VR.Controllers
                     PrimaryDate = target.PrimaryDate,
                     ConventionDate = null,
                     GeneralDate = new DateTime(2016, 11, 8),
-                    TargetMacroRegion = "US",
-                    TargetElectoralRegionName = target.StateName,
-                    TargetElectoralRegionAbbreviation = target.StateAbbreviation,
+                    TargetRegion = target.Region,
+                    TargetStateName = target.StateName,
+                    TargetStateAbbreviation = target.StateAbbreviation,
                     PrezCampaignPhaseViewModels = new List<PrezCampaignPhaseViewModel>()
 	                    {
 	                        // for pres campaign, inject primaryDate, xxxconventionDate, generalDate, 

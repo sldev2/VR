@@ -6,7 +6,10 @@
     int j = 0;
 }
 
-<h2>Targets</h2>
+<pre>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// </pre>
+<h2>//Targets</h2>
+<pre>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// </pre>
+
 
 
 @foreach (var item in Model.Target_TemplateInfos)
@@ -48,9 +51,10 @@
 
 
 <pre>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// </pre>
+<h2>//Posses</h2>
+<pre>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// </pre>
 
 
-<h2>Posses</h2>
 
 @foreach (var item in Model.Target_TemplateInfos)
 {
@@ -70,11 +74,9 @@
                   context.SaveChanges(); 
 </pre>
 
-
 <pre>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// </pre>
-
-
-<h2>Campaigns and CampaignPhases</h2>
+<h2>//Campaigns and CampaignPhases</h2>
+<pre>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// </pre>
 
 
 
@@ -112,9 +114,9 @@
                         Name =  "@(camp.Name)",     
                         IsMultiphasic = true,
                         Issue = "The Trans-Pacific Partnership, TPP",
-                        TargetMacroRegion = "USA",
-                        TargetElectoralRegionName = "@(camp.TargetElectoralRegionName)",
-                        TargetElectoralRegionAbbreviation = "@(camp.TargetElectoralRegionAbbreviation)",
+                        TargetRegion = "USA",
+                        TargetStateName = "@(camp.TargetStateName)",
+                        TargetStateAbbreviation = "@(camp.TargetStateAbbreviation)",
                         ElectionYear = 2016,
                         @if (camp.ConventionDate != null)                    
                         {
@@ -197,9 +199,9 @@
                                 Name = @camp.Name,
                                 IsMultiphasic = true,
                                 Issue = "The Trans-Pacific Partnership, TPP",
-                                TargetMacroRegion = "USA",
-                                TargetElectoralRegionName = "New Jersey",
-                                TargetElectoralRegionAbbreviation = "NJ",
+                                TargetRegion = "USA",
+                                TargetStateName = "New Jersey",
+                                TargetStateAbbreviation = "NJ",
                                 ElectionYear = 2016,
                                 PrimaryDate = new DateTime(2016, 6, 7),
                                 GeneralDate = new DateTime(2016, 11, 8),
@@ -290,9 +292,9 @@
                         Name =  "@(camp.Name)",     
                         IsMultiphasic = true,
                         Issue = "The Trans-Pacific Partnership, TPP",
-                        TargetMacroRegion = "USA",
-                        TargetElectoralRegionName = "@(camp.TargetElectoralRegionName)",
-                        TargetElectoralRegionAbbreviation = "@(camp.TargetElectoralRegionAbbreviation)",
+                        TargetRegion = "@(camp.TargetRegion)",
+                        TargetStateName = "@(camp.TargetStateName)",
+                        TargetStateAbbreviation = "@(camp.TargetStateAbbreviation)",
                         ElectionYear = 2016,
                         @if (camp.ConventionDate != null)                    
                         {

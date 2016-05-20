@@ -45,9 +45,9 @@ namespace VR.Models
         public Nullable<System.DateTime> ConventionDate { get; set; }
         public System.DateTime GeneralDate { get; set; }
 
-        public string TargetMacroRegion { get; set; }
-        public string TargetElectoralRegionName { get; set; }
-        public string TargetElectoralRegionAbbreviation { get; set; }
+        public string TargetRegion { get; set; }
+        public string TargetStateName { get; set; }
+        public string TargetStateAbbreviation { get; set; }
         public virtual ICollection<PrezCampaignPhaseViewModel> PrezCampaignPhaseViewModels { get; set; }
         public virtual Poss Poss { get; set; }
     }
